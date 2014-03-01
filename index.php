@@ -53,7 +53,10 @@ function DirParc($path){
 			$p = $doc->getElementsByTagName('p');
 			if ( $p && 0 < $p->length ) {
 			$p = $p->item(3);
-			echo $doc->savehtml($p);			
+			$s = strip_tags($doc->savehtml($p));	
+			$s = str_replace('Nom : ', '"', $s);
+			$s = str_replace('Description : ', '","', $s);
+			echo $s.'"'	;	
 		}
 	};
 }
